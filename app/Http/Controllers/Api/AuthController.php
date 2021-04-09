@@ -34,7 +34,6 @@ class AuthController extends Controller
         $user = new User();
 
         try {
-            $user->name = $request->name;
             $user->email = $request->email;
             $user->password = $encryptedPass;
             $user->save();
