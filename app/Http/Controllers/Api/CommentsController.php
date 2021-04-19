@@ -32,9 +32,7 @@ class CommentsController extends Controller
                 'success'=> false,
                 'message'=> 'unauthorize access'
             ]);
-        }
-
-        
+        }        
             $comment->comment = $request->comment;
             $comment->update();
 
