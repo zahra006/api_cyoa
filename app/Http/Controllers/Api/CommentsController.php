@@ -71,7 +71,7 @@ class CommentsController extends Controller
 
         return response()->json([
             'success'=> true,
-            'comment'=> $comments
+            'comments'=> $comments
         ]);
     }
 }
