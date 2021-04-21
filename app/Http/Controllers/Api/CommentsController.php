@@ -17,9 +17,11 @@ class CommentsController extends Controller
         $comment->book_id = $request->id;
         $comment->comment = $request->comment;
         $comment->save();
+        $comment->user;
 
         return response()->json([
             'success'=> true,
+            'comment'=>$comment,
             'message'=> 'comment added'
         ]);
     }
@@ -45,7 +47,7 @@ class CommentsController extends Controller
     public function delete(Request $request){
         $comment = Comment::find($request->id);
         //check if user editing his own comment
-        if ($comment->id != Auth::user()->id) {
+        if ($comment->user_id != Auth::user()->id) {
             return response()->json([
                 'success'=> false,
                 'message'=> 'unauthorize access'
