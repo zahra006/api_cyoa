@@ -24,6 +24,7 @@ class CommentsController extends Controller
             'comment'=>$comment,
             'message'=> 'comment added'
         ]);
+        
     }
 
     public function update(Request $request){
