@@ -78,6 +78,29 @@ class AuthController extends Controller
         $user->update();
         return response()->json([
             'success' => true,
+            'user' => $user
+        ]);        
+
+    }
+
+    public function editUserInfo(Request $request){
+        $user = User::find(Auth::user()->id);
+        $user->email = $request->email;
+        $user->password = $encryptedPass;
+        $user->name = $request->name;
+        $user->lastname = $request->lastname;
+        $photo = '';
+        //check if user provide photo
+        if ($request->photo != '') {
+            //nama foto dari time user, utk menghindari redudansi
+            $photo = time().'.jpg';
+            //decode photo string and save to storage/profiles
+            file_put_contents('storage/profiles/'.$photo,base64_decode($request->photo));
+            $user->photo = $photo;
+        }
+        $user->update();
+        return response()->json([
+            'success' => true,
             'photo' => $photo
         ]);        
 
