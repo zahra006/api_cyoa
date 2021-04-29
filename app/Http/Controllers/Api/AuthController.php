@@ -83,10 +83,9 @@ class AuthController extends Controller
 
     }
 
-    public function editUserInfo(Request $request){
+    public function update(Request $request){
         $user = User::find(Auth::user()->id);
         $user->email = $request->email;
-        $user->password = $encryptedPass;
         $user->name = $request->name;
         $user->lastname = $request->lastname;
         $photo = '';
@@ -101,7 +100,7 @@ class AuthController extends Controller
         $user->update();
         return response()->json([
             'success' => true,
-            'photo' => $photo
+            'user' => $user
         ]);        
 
     }
