@@ -17,15 +17,12 @@ class CreateContentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('book_id');
             $table->string('id_content');
-            $table->text('content');
-            $table->string('id_option');
+            $table->string('content','5000');
             $table->string('option');
             $table->timestamps();
 
             $table->foreign('book_id')->references('id')
-            ->on('books')->onDelete('cascade');
-
-            
+            ->on('books')->onDelete('cascade');            
         });
     }
 
