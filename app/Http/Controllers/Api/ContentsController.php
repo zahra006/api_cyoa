@@ -9,7 +9,7 @@ use App\Content;
 class ContentsController extends Controller
 {
     public function contents(){
-        $contents = Content::orderBy('id','desc')->get();
+        $contents = Content::orderBy('id','asc')->get();
         return response()->json([
             'success' => true,
             'contents' => $contents
