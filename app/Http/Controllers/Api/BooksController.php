@@ -11,9 +11,6 @@ class BooksController extends Controller
 {
     public function books(){
         $books = Book::orderBy('id','desc')->get();
-        foreach ($books as $book) {
-            $book['commentsCount'] = count($book->comments);
-        }
         return response()->json([
             'success' => true,
             'books' => $books
