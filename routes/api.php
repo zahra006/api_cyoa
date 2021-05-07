@@ -20,12 +20,18 @@ Route::get('logout','Api\AuthController@logout');
 Route::post('save_user_info','Api\AuthController@saveUserInfo')->middleware('jwtAuth');
 Route::get('user','Api\AuthController@user')->middleware('jwtAuth');
 Route::post('update','Api\AuthController@update')->middleware('jwtAuth');
+
 //Book
 Route::get('books','Api\BooksController@books')->middleware('jwtAuth');
 
 //Comment
 Route::post('books/comments','Api\CommentsController@comments')->middleware('jwtAuth');
-
 Route::post('comments/create','Api\CommentsController@create')->middleware('jwtAuth');
 Route::post('comments/delete','Api\CommentsController@delete')->middleware('jwtAuth');
 Route::post('comments/update','Api\CommentsController@update')->middleware('jwtAuth');
+
+//content
+Route::get('contents','Api\ContentsController@contents')->middleware('jwtAuth');
+
+//States
+Route::get('states','Api\StatesController@states')->middleware('jwtAuth');
